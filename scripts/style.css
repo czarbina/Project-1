@@ -1,5 +1,42 @@
+.title {
+ font-family: 'Damion', cursive;
+  font-size: 32px;
+  color: ,10,59,1) 88%, rgba(255,10,59,1) 100%);
+}
+
+.card-title {
+  font-family: 'Raleway', sans-serif;
+}
+
+#instructions {
+
+}
+img {
+  float: left;
+  height: 62.5px;
+}
+
+#text {
+  font: 40px;
+}
+
+.background {
+  background-repeat: no-repeat;
+}
+
+#instructions {
+
+  margin-top: 30px;
+
+}
 
 
+h4 {
+font-family: 'Satisfy', cursive;
+color: #F05;
+
+}
+#ff9800 orange"
       #map {
         height: 600px;
         width: 800px;
@@ -92,5 +129,7 @@
 body {
 	
 	background-color: #f2cbbc;
+  background-repeat: no-repeat;
+  
 
 }
