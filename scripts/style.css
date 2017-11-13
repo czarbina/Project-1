@@ -1,3 +1,16 @@
+ /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+        margin-top: 100px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
 .title {
  font-family: 'Damion', cursive;
   font-size: 32px;
@@ -58,7 +71,7 @@ color: #F05;
       }
 
       #infowindow-content {
-        display: none;
+        display: block;
       }
 
       #map #infowindow-content {
@@ -72,7 +85,6 @@ color: #F05;
         -moz-box-sizing: border-box;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
         font-family: Roboto;
       }
 
@@ -93,7 +105,6 @@ color: #F05;
       }
 
       #pac-input {
-        background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
@@ -108,8 +119,6 @@ color: #F05;
       }
 
       #title {
-        color: #fff;
-        background-color: #4d90fe;
         font-size: 25px;
         font-weight: 500;
         padding: 6px 12px;
