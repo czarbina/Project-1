@@ -1,4 +1,58 @@
+.carousel { z-index: -99; } /* keeps this behind all content */
+.carousel  {
+    position: fixed; 
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
 
+}
+
+.carousel-item1 {
+    background: url("../images/background.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-item2 {
+    background: url('../images/background2.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-item3 {
+    background: url('../images/background3.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-item4 {
+    background: url('../images/background4.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel-item5 {
+    background: url('../images/background5.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .active.left {
+    left:0;
+    opacity:0;
+    z-index:2;
+}
+
+
+
+
+
+
+
+
+
+
+#map {
+  margin: 0 auto 0 auto;
+}
 .title {
  font-family: 'Damion', cursive;
   font-size: 32px;
@@ -9,13 +63,16 @@
   font-family: 'Raleway', sans-serif;
 
 }
-#instructions {
- opacity: 0.8;
+#mapHolder {
+  margin-top: 57px;
 }
 
+#instruct {
+  opacity: 0.9;
+}
 #lyft-web-button-parent{
 padding: 10%;
-margin-left: 25%;
+margin-left: 35%;
 }
 
 
@@ -29,7 +86,10 @@ img {
 }
 
 .background {
+  margin-top: 20px;
   background-repeat: no-repeat;
+  height: 100%;
+  
 }
 
 #instructions {

@@ -6,17 +6,31 @@
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
    <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <script
+     src="https://code.jquery.com/jquery-3.2.1.min.js"
+     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+     crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+   
 	 <link rel="stylesheet" href="scripts/style.css">
+   <script src="scripts/app.js"></script>
    <script src="scripts/lyftWebButton.js"></script>
 
 </head>
 
 <body background="images/background.jpg">
+  <div id="carousel carousel-slider">
+    <a id="item1" class="carousel-item1"></a>
+    <a id="item2" class="carousel-item2"></a>
+    <a id="item3" class="carousel-item3"></a>
+    <a id="item4" class="carousel-item4"></a>
+    <a id="item5" class="carousel-item5"></a>
+  </div>
 
 	<nav>
-    <div class="nav-wrapper center-align">
+    <div class="nav-wrapper center-align hoverable">
 
-    <span class="title">Cheap Thrills</span>
+    <span class="title hoverable">Cheap Thrills</span>
  
        <img src="images/Cheap-Thrills.png">
      
@@ -27,9 +41,9 @@
  
 <br>
 <div class="row">
-        <div class="col s12 m6 l6">
+        <div id="instruct" class="col s12 m6 l6">
           <div class="card #b2dfdb teal lighten-2">
-            <div id ="instructions" class="card-content white-text">
+            <div id ="instructions" class="card-content white-text hoverable">
               <span class="card-title">How to Use:</span>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, maiores, molestias nisi blanditiis natus voluptatum ex autem numquam magni assumenda facilis, fugit dolor atque rem tempore consectetur. Iure, doloremque, repellendus.</p>
             </div>
@@ -81,7 +95,10 @@
       
 
 <br>
-   <nav>
+<br>
+<br>
+<br>
+  <!--  <nav>
     <div class="nav-wrapper ">
       <form>
         <div class="input-field">
@@ -91,93 +108,146 @@
         </div>
       </form>
     </div>
-  </nav>
+  </nav> -->
 
-<div class="row">
-	<div class="col s12 m6 l6">
-  <div id="results">
+<div class="row" id="mapHolder">
+	<div class="col s12 m12 l12">
+  
+    <input id="submit" type="button" value="Put markers on map">
 
-  	
-    <div id="map"></div>
-    <script>
-      // This example adds a search box to a map, using the Google Place Autocomplete
-      // feature. People can enter geographical searches. The search box will return a
-      // pick list containing a mix of places and predicted search terms.
+<input id="cheapThrills" type="button" onclick="initMap(latx, longy);" value="Get your cheap Thrills">
+<br>
+  <div id="map" style="margin: auto; width: 100%; height: 700px;">
 
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 34.024958, lng: -118.407439},
-          zoom: 13,
-          mapTypeId: 'roadmap'
-        });
+  </div>
+<p id="demo"></p>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDReXCjVK3a0mchWsSvUHXzUGl2H-rCqn8&libraries=places,geometry"></script>
+  	<script>
+window.onload = getLocation();
 
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
+// function to get and set user location. 
 
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
+var x = document.getElementById("demo");
 
-          if (places.length == 0) {
-            return;
-          }
+var latx = "";
+var longy = "";
 
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
 
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Woops, get a newer browser dude.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = " Latitude: " + position.coords.latitude + 
+    "<br> Longitude: " + position.coords.longitude; 
+    latx = position.coords.latitude;
+    longy = position.coords.longitude;
+    
+}
 
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
+
+// Grabbing the results from the User location
+var map;
+var service;
+var mapMarkers;
+
+function initMap(param_lat, param_lng) {
+
+  var pyrmont = new google.maps.LatLng(param_lat, param_lng);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: pyrmont,
+    zoom: 15
+  });
+
+  var request = {
+    location: pyrmont,
+    radius: 5000,
+    type: ['food'],
+    maxPriceLevel: ["2"],
+    rankBy: [google.maps.places.RankBy.PROMINENCE]
+  };
+
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      var resultCount = 0;
+      for (var i = 0; i < results.length; i++) {
+        if (google.maps.geometry.spherical.computeDistanceBetween(results[i].geometry.location, pyrmont) < request.radius) {
+          console.log(results[i].geometry.location);
+          console.log(results[i].name);
+          console.log(results[i].rating);
+          console.log(results[i].price_level);
+          console.log(results[i].place_id);
+
+          var request2 = {
+            placeId: results[i].place_id
+          };
+
+          var content = {name: results[i].name};
+          var input = request2;
+          console.log(request2);         
+          service = new google.maps.places.PlacesService(map);
+          resultCount++;
+
+
+          var locationMarker, i;
+
+              marker = new google.maps.Marker({
+              position: results[i].geometry.location,
+              map: map
+            });
+              
+            // var content = results[i].name;
+
+            // var infoWindow = new google.maps.InfoWindow()
+
+            // google.maps.addListener(marker, 'click', function (map, marker) {
+            //     infoWindow.setContent(content)
+            //     infoWindow.open(map, marker)
+            // });    
+              
+              contentWindow = results[i].name, results[i].rating, results[i].price_level;
+              positionWindow = results[i].geometry.location;
+
+              marker.addListener("click", function() {
+              new google.maps.InfoWindow({
+              position: positionWindow,
               map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
+              content: contentWindow
+              });
+             
+              });
 
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
+        }
+          
       }
+      if (resultCount == 0) {
+        $("#res").prepend("No Results inside search area");
+      }
+    } else {
+      $("#res").prepend("No Results, status " + status);
+    }
+    }
+  }
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-8XlmWtW_77MFxQVM8rmIGuYH9kfian8&libraries=places&callback=initAutocomplete"
-         async defer></script>
+
+
+function toRad(Value) { // Converts numeric degrees to radians
+  return Value * Math.PI / 180;
+}
+
+</script>
+
+ 
   	</div>
   	 </div>
  	</div>	

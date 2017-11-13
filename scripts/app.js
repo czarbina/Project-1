@@ -1,5 +1,3 @@
-$( document ).ready(function() {
 
-    console.log( "Ready to ROCK!" );
-
-});
+$('.carousel.carousel-slider').carousel({fullWidth: true});
+        
