@@ -68,12 +68,18 @@
 
      <script>
 function myMap() {
+  var myCenter = new google.maps.LatLng(34.068921, -118.445181);
   var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: new google.maps.LatLng(34.068921, -118.445181), zoom: 15
-  };
+  var mapOptions = {center: myCenter, zoom: 15};
   var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({
+    position:myCenter,
+    animation: google.maps.Animation.BOUNCE
+
+  });
+  marker.setMap(map);
 }
+</script>
 </script>
     <script async defer
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB10BQl1Zcz8grxFrJE6ToYVJUjTnJadVw&callback=myMap"></script>    </script>
