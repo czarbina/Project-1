@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	 <style>
+    #map-canvas {
+      height: 100%;
+      width: 100%;
+      margin: 0px;
+      padding: 0px
+    }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDReXCjVK3a0mchWsSvUHXzUGl2H-rCqn8&libraries=places,geometry"></script>
+
+<p>Your Location loads automatically.</p>
+
+<p id="demo"></p>
+
+<!-- LYFT BUTTON GOES HERE -->
+<div id="lyft-web-button-parent"></div>
+<br>
+<input id="submit" type="button" value="Put markers on map">
+<input id="cheapThrills" type="button" onclick="initMap(latx, longy);" value="Get your cheap Thrills">
+<br>
+<div id="map" style="width: 500px; height: 400px;"></div>
+
+<script>
+window.onload = getLocation();
+
+// function to get and set user location. 
+
+var x = document.getElementById("demo");
+
+var latx = "";
+var longy = "";
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Woops, get a newer browser dude.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = " Latitude: " + position.coords.latitude + 
+    "<br> Longitude: " + position.coords.longitude; 
+    latx = position.coords.latitude;
+    longy = position.coords.longitude;
+    
+}
+
+// Grabbing the results from the User location
+var map;
+var service;
+var mapMarkers;
+
+function initMap(param_lat, param_lng) {
+
+  var pyrmont = new google.maps.LatLng(param_lat, param_lng);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: pyrmont,
+    zoom: 15
+  });
+
+  var request = {
+    location: pyrmont,
+    radius: 5000,
+    type: ['food'],
+    maxPriceLevel: ["2"],
+    rankBy: [google.maps.places.RankBy.PROMINENCE]
+  };
+
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      var resultCount = 0;
+      for (var i = 0; i < results.length; i++) {
+        if (google.maps.geometry.spherical.computeDistanceBetween(results[i].geometry.location, pyrmont) < request.radius) {
+          console.log(results[i].geometry.location);
+          console.log(results[i].name);
+          console.log(results[i].rating);
+          console.log(results[i].price_level);
+          console.log(results[i].place_id);
+
+          var request2 = {
+            placeId: results[i].place_id
+          };
+          var input = request2;
+          console.log(request2);         
+          service = new google.maps.places.PlacesService(map);
+          resultCount++;
+
+          var locations = ['results[i].geometry.location'];
+
+          var infowindow = new google.maps.InfoWindow();
+
+          var locationMarker, i;
+
+              marker = new google.maps.Marker({
+              position: results[i].geometry.location,
+              map: map
+            });
+
+            google.maps.event.addListener(marker,"click")
+          
+          
+
+        }
+      }
+      if (resultCount == 0) {
+        $("#res").prepend("No Results inside search area");
+      }
+    } else {
+      $("#res").prepend("No Results, status " + status);
+    }
+    }
+  }
+
+function toRad(Value) { // Converts numeric degrees to radians
+  return Value * Math.PI / 180;
+}
+</script>
+
+<!-- // Calling the lyft API for price suggestion to destination.  -->
+<script type="text/javascript">
+  var OPTIONS = {
+    scriptSrc: 'lyftWebButton.js',
+    namespace: '',
+    clientId: 'dVADcs_RXdec',
+    clientToken: 'WA1svvInRfqditf+7XAyrpObsEx/s3m5u4+hPPERfGCte06OHtmTPqIHb6hgNhsWl1agE41cnUl+i1Brpf9D2Uh8NsDSy49xf1OC5Q7Gwy5z15d9I2KQD14=',
+    location: {
+      pickup: {}, 
+      destination: {
+        latitude: '37.776503000',
+        longitude: '-122.392038500',
+      },
+    },
+    parentElement: document.getElementById('lyft-web-button-parent'),
+    queryParams: {
+      credits: ''
+    },
+    theme: 'multicolor large',
+  };
+  (function(t) {
+    var n = this.window,
+    e = this.document;
+    n.lyftInstanceIndex = n.lyftInstanceIndex || 0;
+    var a = t.parentElement,
+    c = e.createElement("script");
+    c.async = !0, c.onload = function() {
+    n.lyftInstanceIndex++;
+    var e = t.namespace ? "lyftWebButton" + t.namespace + n.lyftInstanceIndex : "lyftWebButton" + n.lyftInstanceIndex;
+    n[e] = n.lyftWebButton, t.objectName = e, n[e].initialize(t)
+  }, c.src = t.scriptSrc, a.insertBefore(c, a.childNodes[0])
+  }).call(this, OPTIONS);
+
+</script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 .title {
  font-family: 'Damion', cursive;
   font-size: 32px;
@@ -6,11 +7,18 @@
 
 .card-title {
   font-family: 'Raleway', sans-serif;
-}
 
+}
 #instructions {
-
+ opacity: 0.8;
 }
+
+#lyft-web-button-parent{
+padding: 10%;
+margin-left: 25%;
+}
+
+
 img {
   float: left;
   height: 62.5px;
