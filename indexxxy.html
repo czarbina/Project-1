@@ -70,14 +70,25 @@
 function myMap() {
   var myCenter = new google.maps.LatLng(34.068921, -118.445181);
   var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: myCenter, zoom: 15};
+  var mapOptions = {center: myCenter, zoom: 15, disableDefaultUI: true};
   var map = new google.maps.Map(mapCanvas, mapOptions);
   var marker = new google.maps.Marker({
     position:myCenter,
     animation: google.maps.Animation.BOUNCE
-
   });
   marker.setMap(map);
+  // Can add info window. Would be nice to integrate on click.
+  var infowindow = new google.maps.InfoWindow({
+    content: "You clicked a marker!!"
+  });
+  
+  google.maps.event.addListener(marker,'click',function() {
+    var pos = map.getZoom();
+    map.setZoom(20);
+    map.setCenter(marker.getPosition());
+    infowindow.open(map,marker);
+    window.setTimeout(function() {map.setZoom(pos);},3000);
+  });
 }
 </script>
 </script>
