@@ -47,7 +47,7 @@ color: #F05;
 #ff9800 orange"
       #map {
         height: 600px;
-        width: 800px;
+        width: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -140,4 +140,9 @@ body {
   background-repeat: no-repeat;
   
 
+}
+
+#mappy {
+  width: 100%;
+  margin-top:170px;
 }
