@@ -72,8 +72,7 @@
             <div id ="instructions" class="card-content white-text hoverable">
               <span class="card-title">How to Use:</span>
               <p>Allow Google to access your location (make sure your pop-up blocker
-              is disabled! Once you see your latitude and longitude retrieved, just get your your
-            Cheap Thrillz! Enjoy!</p>
+              is disabled!) Once you see that Lyft has updated with a time estimate, go ahead and get your Thrill on! Enjoy!</p>
             </div>
            
           </div>
@@ -206,7 +205,7 @@ function initMap(param_lat, param_lng) {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
-    zoom: 12
+    zoom: 14
   });
 
   var request = {
@@ -347,17 +346,20 @@ function toRad(Value) { // Converts numeric degrees to radians
     <div class="chatbox">
       <div class="col s12 m4 l4 " id="chat">
           <div id="sizer">
-          <div id="swap-zone"><input class="#ffab00 amber accent-4" id="username" placeholder="Name"/>
-         <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="start">Start</button>
-   
-    <div class="card #ff5252 red accent-2" id="chat-messages">
-      <span class="white-text"></span>
-    </div>
-      <div id="chat-bar">
-          <input id="chat-input" />
-          <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="chat-send">Send </button>
-      </div>
-    </div>
+          <form id="swap-zone">
+            <input class="#ff5252 red accent-2 white-text" id="username" placeholder="Name" required/>
+
+              <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="start">Start</button>
+            <div id="new-div">
+            </div>
+            <div class="card #ff5252 red accent-2" id="chat-messages">
+              <span class="white-text"></span>
+            </div>
+            <div id="chat-bar">
+            <input id="chat-input" />
+              <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="chat-send">Send </button>
+            </div>
+          </form>
       <script>
         // Initialize Firebase
         var config = {
@@ -374,9 +376,13 @@ function toRad(Value) { // Converts numeric degrees to radians
         var playersRef = database.ref("players");
         var username = "";
         var playersRef = database.ref("players");
+      $("#swap-zone").submit(function(e){
+        return false;
+      })
       // USERNAME LISTENERS
       // Start button - takes username and tries to get user in game
-      $("#start").click(function() {
+      $("#start").click(function(e) {
+        e.preventDefault();
         if ($("#username").val() !== "") {
           username = ($("#username").val());
           getInGame();
@@ -392,8 +398,9 @@ function toRad(Value) { // Converts numeric degrees to radians
         console.log(username);
       // CHAT LISTENERS
       // Chat send button listener, grabs input and pushes to firebase. (Firebase's push automatically creates a unique key)
-      $("#chat-send").click(function() {
-        if ($("#chat-input").val() !== "") {
+      $("#chat-send").click(function(e) {
+        e.preventDefault();
+        if ($("#chat-input").val() !== "" && $("#username").val() !== "" ) {
           var message = $("#chat-input").val();
           chatData.push({
             name: username,
@@ -429,22 +436,24 @@ function toRad(Value) { // Converts numeric degrees to radians
         // Keeps div scrolled to bottom on each update.
         $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
       });
-      // Function to get in the game (chat)
+      // Function to get in the game
       function getInGame() {
-      
         var chatDataDisc = database.ref("/chat/" + Date.now());
         playerRef = database.ref("/players/");
+       
           // On disconnect remove this user's player object
           playerRef.onDisconnect().remove();
           // Send disconnect message to chat with Firebase server generated timestamp and id of '0' to denote system message
           chatDataDisc.onDisconnect().set({
             name: username,
             time: firebase.database.ServerValue.TIMESTAMP,
-            message: "has disconnected.",
+            
             idNum: 0
           });
-          // Remove name input box and show current player number.
-          $("#swap-zone").html("<h2>Hi, " + username + "!");
+          // // Remove name input box and show current player number.
+          $("#new-div").html("<h3>Thrilled you're here, " + username + "!");
+          $("#username").hide();
+          $("#start").hide();
       };
 </script>
           </div>

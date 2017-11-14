@@ -268,26 +268,16 @@ body {
     font-family: "Raleway", sans-serif;
     color: white;
     padding-left: 5%;
-    width: 100%;
     opacity: 0.9;
     overflow-y: auto;
     height: 250px;
+    width: 100%;
 }
 #swap-zone {
     color:white;
-    width: 100%;
+    width:100%;
 }
 #chat-bar {
     color:white;
     width: 100%;
-}
-
-.temperature{
- 
-  margin-left:250px;
-}
-
-.city {
-  margin-top: 40px;
-  margin-left:250px;
 }
