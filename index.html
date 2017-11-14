@@ -167,6 +167,7 @@ function initMap(param_lat, param_lng) {
       var resultCount = 0;
       for (var i = 0; i < results.length; i++) {
         if (google.maps.geometry.spherical.computeDistanceBetween(results[i].geometry.location, pyrmont) < request.radius) {
+          console.log(results[i].vicinity);
           console.log(results[i].geometry.location);
           console.log(results[i].name);
           console.log(results[i].rating);
@@ -176,39 +177,63 @@ function initMap(param_lat, param_lng) {
           var request2 = {
             placeId: results[i].place_id
           };
+
+          var content = {name: results[i].name};
           var input = request2;
           console.log(request2);         
           service = new google.maps.places.PlacesService(map);
           resultCount++;
 
-          var locations = ['results[i].geometry.location'];
-
-          var infowindow = new google.maps.InfoWindow();
 
           var locationMarker, i;
-
-
 
               marker = new google.maps.Marker({
               position: results[i].geometry.location,
               map: map,
-              title: results[i].name
+              title: results[i].name + " | Address " + results[i].vicinity + " | Rating " + results[i].rating
             });
 
-            marker.addListener("click", function() {
-            
+              
+            // // var content = results[i].name;
 
-              new google.maps.InfoWindow({
+            //     marker.addListener("click", function() {
+            //       new google.maps.InfoWindow(map, marker)
+            // });    
+
+              var infoWindow;
+              var openWindow = false;
+
+              marker.addListener("click", function() {
+              console.log(this);
+              if(openWindow) {
+              infoWindow.close()
+              infoWindow = new google.maps.InfoWindow({
               content: this.title,
               map: map,
               position: this.position
               });
+              }
+              else {
+              infoWindow = new google.maps.InfoWindow({
+              content: this.title,
+              map: map,
+              position: this.position
               
-            });
-                    // just trying to push!
-          
+
+              });
+              openWindow = true;
+              }
+         
+              })
+
+    //           function closeLastOpenedInfoWindow() {
+    //           if (lastOpenedInfoWindow) {
+    //             lastOpenedInfoWindow.close();
+    // }
+    // }
 
         }
+          
       }
       if (resultCount == 0) {
         $("#res").prepend("No Results inside search area");
@@ -222,7 +247,6 @@ function initMap(param_lat, param_lng) {
 function toRad(Value) { // Converts numeric degrees to radians
   return Value * Math.PI / 180;
 }
-
 </script>
 
  
