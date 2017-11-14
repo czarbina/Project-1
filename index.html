@@ -125,12 +125,12 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Woops, get a newer browser dude.";
+        console.log("Woops, get a newer browser dude.");
     }
 }
 function showPosition(position) {
-    x.innerHTML = " Latitude: " + position.coords.latitude + 
-    "<br> Longitude: " + position.coords.longitude; 
+    console.log(" Latitude: " + position.coords.latitude + 
+    "<br> Longitude: " + position.coords.longitude); 
     latx = position.coords.latitude;
     longy = position.coords.longitude;
     
