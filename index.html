@@ -2,78 +2,31 @@
 <html>
 <head>
   <title>Cheap Thrills</title>
-
-   
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
    <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  
    <link rel="stylesheet" href="scripts/style.css">
-
-   <script
-     src="https://code.jquery.com/jquery-3.2.1.min.js"
-     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-     crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
- 
-   
-  
-
-
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js">
+    </script>
 </head>
 
 <body>
+  <!-- header with logo -->
   <div class="container">
-
   <body background="images/background.jpg">
-
-
   <nav>
-  
     <div class="nav-wrapper center-align hoverable">
-       <img src="images/Cheap-Thrills.png">
-
+    <img src="images/Cheap-Thrills.png">
     <span class="title">Cheap Thrills <div class="city"></div><div class="temperature"></div></span>
-       
      </div>
-       
-
-
-
-       
-<!-- <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a> -->
-
-  <!-- Dropdown Structure -->
-  <!-- <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-  </ul> -->
-
-<!-- possible weather drop down on nav bar -->
-<!--   <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-
-          <ul id='dropdown1' class="dropdown-content">
-           <li>
-            City
-          </li>
-          <li>
-            Weather
-          </li>
-         </ul> -->
-
-   
-    <
-    <!-- <div class="city-temp">
-    <div class="city"></div>
-        <div class="temperature"></div>
-      </div> -->
 
   </nav>
   <br>
   <br>
   <br>
-
- 
+<!-- instructions -->
 <div class="row">
         <div id="instruct" class="col s12 m6 l6">
           <div class="card #ff5252 red accent-2">
@@ -82,11 +35,10 @@
               <p>Allow Google to access your location (make sure your pop-up blocker
               is disabled!) Once you see that Lyft has updated with a time estimate, go ahead and get your Thrill on! Enjoy!</p>
             </div>
-           
           </div>
         </div>
         <div class="col s0 m0 l3"></div>
-      
+<!-- Lyft web button -->
     <div class="col s12 m6 l3">
      <div id="lyft-web-button-parent">
      <script type="text/javascript">
@@ -120,43 +72,11 @@
                         n[e] = n.lyftWebButton, t.objectName = e, n[e].initialize(t)
                         }, c.src = t.scriptSrc, a.insertBefore(c, a.childNodes[0])
                          }).call(this, OPTIONS);
-
 </script>
-   </div>
-        
-      </div>
-   </div>
-  <div class="row">
-      
-     <!-- <div id="weather" class="col s12 m6 l6">
-      <div class="card #b2dfdb teal lighten-2 hoverable">
-            <div class="card-content white-text">
-               
-             </div> 
-           </div>
-         </div>
-      <div id="chatbox" class="col s12 m6 l6">
-
-      </div>
-
-       </div> -->
-
-      
-
+  </div>      
+  </div>
+  </div>
 <br>
-
-<!-- Remove search bar for now -->
-<!--    <nav>
-    <div class="nav-wrapper ">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">adjust</i>
-        </div>
-      </form>
-    </div>
-  </nav> -->
 
 <div class="row">
    <div class="col s12 m8 l8 position: center">
@@ -164,22 +84,15 @@
     </div>
     <div class="col s12 m4 l4">
     
-    </div>
-   
-
-
-  
-
+</div>
 <br>
+<!-- Google Maps -->
 <div class="row">
 <div class="col s12 m8 l8">
 <div id="map" style="width: 100%; height: 500px;"></div>
 <p id="demo"></p>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDReXCjVK3a0mchWsSvUHXzUGl2H-rCqn8&libraries=places,geometry"></script>
-    
-
- 
-    </div>
+</div>
 <!-- This is our ChatBox -->
     <div class="chatbox">
       <div class="col s12 m4 l4 " id="chat">
@@ -198,31 +111,22 @@
               <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="chat-send">Send </button>
             </div>
           </form>
-      <script>
-        // Initialize Firebase
-       
-</script>
+
           </div>
         </div>
       </div>
 
 </div>
 </div>
-
-  
-    
-
+<!-- Footer -->
      <footer class="page-footer">
-     
             <div class="row">
               <div class="col s12 m12 l12"> 
-                <h6 class="white-text text-center">© 2017 Copyright Philip, Sabrina, Kevin, Jesus</h6>
+                <h6 class="white-text text-center"> 2017 © Jesus Bacon</h6>
               </div>
             </div>
           </div>
         </footer>
-
-
 
 </div>
  <script src="scripts/app.js"></script>
