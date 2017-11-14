@@ -1,5 +1,5 @@
-.carousel { z-index: -99; } /* keeps this behind all content */
-.carousel  {
+/*.carousel { z-index: -99; } /* keeps this behind all content */
+/*.carousel  {
     position: fixed; 
     width: 100%; height: 100%;
     -webkit-transition: opacity 1s;
@@ -8,46 +8,91 @@
     -o-transition: opacity 1s;
     transition: opacity 1s;
 
-}
+}*/
 
-.carousel-item1 {
+/*.carousel-item1 {
     background: url("../images/background.jpg");
     background-size: cover;
     -moz-background-size: cover;
-}
-.carousel-item2 {
+}*/
+/*.carousel-item2 {
     background: url('../images/background2.jpg');
     background-size: cover;
     -moz-background-size: cover;
-}
-.carousel-item3 {
+}*/
+/*.carousel-item3 {
     background: url('../images/background3.jpg');
     background-size: cover;
     -moz-background-size: cover;
-}
-.carousel-item4 {
+}*/
+/*.carousel-item4 {
     background: url('../images/background4.jpg');
     background-size: cover;
     -moz-background-size: cover;
-}
-.carousel-item5 {
+}*/
+/*.carousel-item5 {
     background: url('../images/background5.jpg');
     background-size: cover;
     -moz-background-size: cover;
-}
-.carousel .active.left {
+}*/
+/*.carousel .active.left {
     left:0;
     opacity:0;
     z-index:2;
+}*/
+
+
+/*
+.responsive-image{
+    width: 100%;
+    background-size: 100% 100%;
+} */
+
+
+/* Retina display */
+/*@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-image: url('images/background.jpg');
+    }
 }
+*/
+/* Desktop */
+/*@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-image: url('images/background.jpg');
+    }
+}*/
+
+/* Tablet */
+/*@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+        background-image: url('images/background2.jpg');
+    }
+}
+*/
+/* Mobile HD */
+/*@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+        background-image: url('images/background3.jpg');
+    }
+}*/
+
+/* Mobile LD */
+/*@media screen and (max-width: 350px){
+    .responsive-image{
+        background-image: url('images/background4.jpg');
+    }
+} */
 
 
 
 
-
-
-
-
+body {
+ background-color: #f2cbbc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
 
 
 #map {
@@ -64,15 +109,16 @@
 
 }
 #mapHolder {
-  margin-top: 57px;
+  margin: auto;
 }
 
 #instruct {
   opacity: 0.9;
+  margin: auto;
 }
 #lyft-web-button-parent{
 padding: 10%;
-margin-left: 35%;
+margin: auto;
 }
 
 
@@ -88,8 +134,22 @@ img {
 .background {
   margin-top: 20px;
   background-repeat: no-repeat;
-  height: 100%;
   
+  background-size: ;
+ 
+  
+}
+
+
+#weather {
+  padding: 5px;
+  text-align: center;
+  opacity: 0.9;
+  margin: auto;
+} 
+
+h6{
+  text-align: center;
 }
 
 #instructions {
@@ -111,7 +171,7 @@ color: #F05;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 100%;
+        height: ;
         margin: 0;
         padding: 0;
       }
@@ -194,15 +254,40 @@ color: #F05;
 	background-color: #e6af4b;
 }
 
-body {
-	
-	background-color: #f2cbbc;
-  background-repeat: no-repeat;
-  
-
-}
 
 #mappy {
   width: 100%;
-  margin-top:170px;
+  margin-top:20px;
+}
+/*chat box styling*/
+
+body {
+    font-family: url="https://fonts.googleapis.com/css?family=Ralewa", sans-serif;
+}
+#chat-messages {
+    font-family: "Raleway", sans-serif;
+    color: white;
+    padding-left: 5%;
+    width: 100%;
+    opacity: 0.9;
+    overflow-y: auto;
+    height: 250px;
+}
+#swap-zone {
+    color:white;
+    width: 100%;
+}
+#chat-bar {
+    color:white;
+    width: 100%;
+}
+
+.temperature{
+ 
+  margin-left:250px;
+}
+
+.city {
+  margin-top: 40px;
+  margin-left:250px;
 }
