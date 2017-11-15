@@ -1,15 +1,13 @@
 
-// $('.carousel.carousel-slider').carousel({fullWidth: true});
         
 
  // map logic
  
 window.onload = getLocation();
 window.onload = initMap (34.063324, -118.448061);
+window.onload;
 
 // function to get and set user location. 
-
-var x = document.getElementById("demo");
 
 var latx = "";
 var longy = "";
@@ -22,17 +20,13 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    console.log(" Latitude: " + position.coords.latitude + 
-    "<br> Longitude: " + position.coords.longitude); 
     latx = position.coords.latitude;
     longy = position.coords.longitude;
-    
-}
+    }
 
 // Grabbing the results from the User location
 var map;
 var service;
-var mapMarkers;
 
 function initMap(param_lat, param_lng) {
 
@@ -40,12 +34,12 @@ function initMap(param_lat, param_lng) {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
-    zoom: 14
+    zoom: 15
   });
 
   var request = {
     location: pyrmont,
-    radius: 2500,
+    radius: 3000,
     type: ['food'],
     maxPriceLevel: ["2"],
     rankBy: [google.maps.places.RankBy.PROMINENCE]
@@ -60,20 +54,12 @@ function initMap(param_lat, param_lng) {
       var resultCount = 0;
       for (var i = 0; i < results.length; i++) {
         if (google.maps.geometry.spherical.computeDistanceBetween(results[i].geometry.location, pyrmont) < request.radius) {
-          console.log(results[i].vicinity);
-          console.log(results[i].geometry.location);
-          console.log(results[i].name);
-          console.log(results[i].rating);
-          console.log(results[i].price_level);
-          console.log(results[i].place_id);
-
           var request2 = {
             placeId: results[i].place_id
           };
 
           var content = {name: results[i].name};
-          var input = request2;
-          console.log(request2);         
+          var input = request2;        
           service = new google.maps.places.PlacesService(map);
           resultCount++;
 
@@ -86,18 +72,10 @@ function initMap(param_lat, param_lng) {
               title: results[i].name + " | Address " + results[i].vicinity + " | Rating " + results[i].rating
             });
 
-              
-            // // var content = results[i].name;
-
-            //     marker.addListener("click", function() {
-            //       new google.maps.InfoWindow(map, marker)
-            // });    
-
               var infoWindow;
               var openWindow = false;
 
               marker.addListener("click", function() {
-              console.log(this);
               if(openWindow) {
               infoWindow.close()
               infoWindow = new google.maps.InfoWindow({
@@ -118,64 +96,33 @@ function initMap(param_lat, param_lng) {
               }
          
               })
-
-    //           function closeLastOpenedInfoWindow() {
-    //           if (lastOpenedInfoWindow) {
-    //             lastOpenedInfoWindow.close();
-    // }
-    // }
-
-        }
-          
+            }    
+          }  
+        } 
       }
-      if (resultCount == 0) {
-        $("#res").prepend("No Results inside search area");
       }
-    } else {
-      $("#res").prepend("No Results, status " + status);
-    }
-    }
-  }
-
-function toRad(Value) { // Converts numeric degrees to radians
-  return Value * Math.PI / 180;
-}
-
-    // This is our API key
-    // window.onload = getLocation();
-    window.onload
     
-   
+    function loadWeather(){
     var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "lat=" + "34.06" + "&lon=" + "-118.44" + "&units=imperial&appid=" + APIKey;
+      "lat=" + latx + "&lon=" + longy + "&units=imperial&appid=" + APIKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
-    $.ajax({
+    
+        $.ajax({
         url: queryURL,
         method: "GET"
       })
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
 
-        // Log the queryURL
-        console.log(queryURL);
-
-        // Log the resulting object
-        console.log(response);
-
         // Transfer content to HTML
         $(".city").html("<h6>" + response.name + " Weather Details</h6>");
         $(".temperature").text("Temperature (F) " + response.main.temp);
-
-        // Log the data in the console as well
-        console.log("Temperature (F): " + response.main.temp);
-        window.onload
-
       });
-  
+    }
  
 
  // chat logic
