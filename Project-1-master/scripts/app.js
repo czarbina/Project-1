@@ -1,11 +1,11 @@
 
-        
+
 
  // map logic
  
-window.onload = getLocation();
-window.onload = initMap (34.063324, -118.448061);
-window.onload;
+ window.onload = getLocation();
+ window.onload = initMap (34.063324, -118.448061);
+ window.onload;
 
 // function to get and set user location. 
 
@@ -13,16 +13,18 @@ var latx = "";
 var longy = "";
 
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Woops, get a newer browser dude.");
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } 
+  else {
+    console.log("Woops, get a newer browser dude.");
+  } 
 }
+
 function showPosition(position) {
-    latx = position.coords.latitude;
-    longy = position.coords.longitude;
-    }
+  latx = position.coords.latitude;
+  longy = position.coords.longitude;
+}
 
 // Grabbing the results from the User location
 var map;
@@ -66,55 +68,55 @@ function initMap(param_lat, param_lng) {
 
           var locationMarker, i;
 
-              marker = new google.maps.Marker({
-              position: results[i].geometry.location,
-              map: map,
-              title: results[i].name + " | Address " + results[i].vicinity + " | Rating " + results[i].rating
-            });
+          marker = new google.maps.Marker({
+            position: results[i].geometry.location,
+            map: map,
+            title: results[i].name + " | Address " + results[i].vicinity + " | Rating " + results[i].rating
+          });
 
-              var infoWindow;
-              var openWindow = false;
+          var infoWindow;
+          var openWindow = false;
 
-              marker.addListener("click", function() {
-              if(openWindow) {
+          marker.addListener("click", function() {
+            if(openWindow) {
               infoWindow.close()
               infoWindow = new google.maps.InfoWindow({
-              content: this.title,
-              map: map,
-              position: this.position
+                content: this.title,
+                map: map,
+                position: this.position
               });
-              }
-              else {
+            }
+            else {
               infoWindow = new google.maps.InfoWindow({
-              content: this.title,
-              map: map,
-              position: this.position
-              
+                content: this.title,
+                map: map,
+                position: this.position
+
 
               });
               openWindow = true;
-              }
-         
-              })
-            }    
-          }  
-        } 
-      }
-      }
-    
-    function loadWeather(){
-    var APIKey = "166a433c57516f51dfab1f7edaed8413";
+            }
+
+          })
+        }    
+      }  
+    } 
+  }
+}
+
+function loadWeather(){
+  var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "lat=" + latx + "&lon=" + longy + "&units=imperial&appid=" + APIKey;
+    "lat=" + latx + "&lon=" + longy + "&units=imperial&appid=" + APIKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
     
-        $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
 
@@ -123,10 +125,12 @@ function initMap(param_lat, param_lng) {
         $(".temperature").text("Temperature (F) " + response.main.temp);
       });
     }
+
  
 
+
  // chat logic
-  
+
         // Initialize Firebase
         var config = {
           apiKey: "AIzaSyD3t7H9vCXRhpBBI59kohQqJiPoyWxe5dI",
@@ -142,9 +146,9 @@ function initMap(param_lat, param_lng) {
         var playersRef = database.ref("players");
         var username = "";
         var playersRef = database.ref("players");
-      $("#swap-zone").submit(function(e){
-        return false;
-      })
+        $("#swap-zone").submit(function(e){
+          return false;
+        })
       // USERNAME LISTENERS
       // Start button - takes username and tries to get user in game
       $("#start").click(function(e) {
@@ -161,7 +165,7 @@ function initMap(param_lat, param_lng) {
           getInGame();
         }
       });
-        console.log(username);
+      console.log(username);
       // CHAT LISTENERS
       // Chat send button listener, grabs input and pushes to firebase. (Firebase's push automatically creates a unique key)
       $("#chat-send").click(function(e) {
@@ -193,11 +197,11 @@ function initMap(param_lat, param_lng) {
         // If not - its a user chat message
         if (snapshot.val().idNum === 0) {
           $("#chat-messages").append("<p class=player" + snapshot.val().idNum + "><span>"
-          + snapshot.val().name + "</span>: " + snapshot.val().message + "</p>");
+            + snapshot.val().name + "</span>: " + snapshot.val().message + "</p>");
         }
         else {
           $("#chat-messages").append("<p class=player" + snapshot.val().idNum + "><span>"
-          + snapshot.val().name + "</span>: " + snapshot.val().message + "</p>");
+            + snapshot.val().name + "</span>: " + snapshot.val().message + "</p>");
         }
         // Keeps div scrolled to bottom on each update.
         $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
@@ -206,7 +210,7 @@ function initMap(param_lat, param_lng) {
       function getInGame() {
         var chatDataDisc = database.ref("/chat/" + Date.now());
         playerRef = database.ref("/players/");
-       
+
           // On disconnect remove this user's player object
           playerRef.onDisconnect().remove();
           // Send disconnect message to chat with Firebase server generated timestamp and id of '0' to denote system message
@@ -220,4 +224,32 @@ function initMap(param_lat, param_lng) {
           $("#new-div").html("<h3>Thrilled you're here, " + username + "!");
           $("#username").hide();
           $("#start").hide();
-      };
+        };
+
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+
+
+$("#submitBtn").on("click", function(){
+    event.preventDefault();
+
+  var queryURL = "http://maps.google.com/maps/api/geocode/json?address=" + $("#address").val();
+  
+  // console.log(addy);
+
+  $.ajax({
+          url: encodeURI(queryURL),
+          method: "GET"
+        }).done(function(response) {
+
+          var coord = response.results[0].geometry.location;
+          console.log(coord);
+          initMap(coord.lat,coord.lng);
+    });
+
+    
+
+  });
+
+});
