@@ -210,12 +210,7 @@ function initMap(param_lat, param_lng) {
           // On disconnect remove this user's player object
           playerRef.onDisconnect().remove();
           // Send disconnect message to chat with Firebase server generated timestamp and id of '0' to denote system message
-          chatDataDisc.onDisconnect().set({
-            name: username,
-            time: firebase.database.ServerValue.TIMESTAMP,
-            
-            idNum: 0
-          });
+
           // // Remove name input box and show current player number.
           $("#new-div").html("<h3>Thrilled you're here, " + username + "!");
           $("#username").hide();
