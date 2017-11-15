@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cheap Thrills</title>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <link rel="stylesheet" href="scripts/style.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js">
+    </script>
+</head>
+
+<body>
+  <!-- header with logo -->
+  <div class="container">
+  <body background="images/background.jpg">
+  <nav>
+    <div class="nav-wrapper center-align hoverable">
+    <img src="images/Cheap-Thrills.png">
+    <span class="title">Cheap Thrills <div class="city"></div><div class="temperature"></div></span>
+     </div>
+
+  </nav>
+  <br>
+  <br>
+  <br>
+<!-- instructions -->
+<div class="row">
+        <div id="instruct" class="col s12 m6 l6">
+          <div class="card #ff5252 red accent-2">
+            <div id ="instructions" class="card-content white-text hoverable">
+              <span class="card-title">How to Use:</span>
+              <p>Allow Google to access your location (make sure your pop-up blocker
+              is disabled!) Once you see that Lyft has updated with a time estimate, go ahead and get your Thrill on! Enjoy!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s0 m0 l3"></div>
+<!-- Lyft web button -->
+    <div class="col s12 m6 l3">
+     <div id="lyft-web-button-parent">
+     <script type="text/javascript">
+             var OPTIONS = {
+                   scriptSrc: 'scripts/lyftWebButton.js',
+                   namespace: '',
+                   clientId: 'dVADcs_RXdec',
+                   clientToken: 'WA1svvInRfqditf+7XAyrpObsEx/s3m5u4+hPPERfGCte06OHtmTPqIHb6hgNhsWl1agE41cnUl+i1Brpf9D2Uh8NsDSy49xf1OC5Q7Gwy5z15d9I2KQD14=',
+                    location: {
+                     pickup: {}, 
+                      destination: {
+                   latitude: '37.776503000',
+                      longitude: '-122.392038500',
+                            },
+                            },
+                       parentElement: document.getElementById('lyft-web-button-parent'),
+                      queryParams: {
+                      credits: ''
+                               },
+                       theme: 'multicolor',
+                              };
+                       (function(t) {
+                        var n = this.window,
+                        e = this.document;
+                        n.lyftInstanceIndex = n.lyftInstanceIndex || 0;
+                        var a = t.parentElement,
+                        c = e.createElement("script");
+                        c.async = !0, c.onload = function() {
+                         n.lyftInstanceIndex++;
+                         var e = t.namespace ? "lyftWebButton" + t.namespace + n.lyftInstanceIndex : "lyftWebButton" + n.lyftInstanceIndex;
+                        n[e] = n.lyftWebButton, t.objectName = e, n[e].initialize(t)
+                        }, c.src = t.scriptSrc, a.insertBefore(c, a.childNodes[0])
+                         }).call(this, OPTIONS);
+</script>
+  </div>      
+  </div>
+  </div>
+<br>
+
+<div class="row">
+   <div class="col s12 m8 l8 position: center">
+    <a class="waves-effect waves-light btn #ff5252 red accent-2 hoverable pulse"><i class="material-icons left">location_on</i><input id="cheapThrills" type="button" onclick="initMap(latx, longy); loadWeather();" value="Thrill Me"></a>
+    </div>
+    <div class="col s12 m4 l4">
+    
+</div>
+<br>
+<!-- Google Maps -->
+<div class="row">
+<div class="col s12 m8 l8">
+<div id="map" style="width: 100%; height: 500px;"></div>
+<p id="demo"></p>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDReXCjVK3a0mchWsSvUHXzUGl2H-rCqn8&libraries=places,geometry"></script>
+</div>
+<!-- This is our ChatBox -->
+    <div class="chatbox">
+      <div class="col s12 m4 l4 " id="chat">
+          <div id="sizer">
+          <form id="swap-zone">
+            <input class="#ff5252 red accent-2 white-text" id="username" placeholder="Name" required/>
+
+              <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="start">Start</button>
+            <div id="new-div">
+            </div>
+            <div class="card #ff5252 red accent-2" id="chat-messages">
+              <span class="white-text"></span>
+            </div>
+            <div id="chat-bar">
+            <input class="#ff5252 red accent-2" id="chat-input" />
+              <button class= "waves-effect waves-light btn #ff5252 red accent-2" id="chat-send">Send </button>
+            </div>
+          </form>
+
+          </div>
+        </div>
+      </div>
+
+</div>
+</div>
+<!-- Footer -->
+     <footer class="page-footer">
+            <div class="row">
+              <div class="col s12 m12 l12"> 
+                <h6 class="white-text text-center"> 2017 © Jesus Bacon</h6>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+</div>
+ <script src="scripts/app.js"></script>
+  <script src="scripts/lyftWebButton.js"></script>
+</body>
+</html>

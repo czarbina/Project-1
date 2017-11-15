@@ -1,0 +1,283 @@
+/*.carousel { z-index: -99; } /* keeps this behind all content */
+/*.carousel  {
+    position: fixed; 
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+
+}*/
+
+/*.carousel-item1 {
+    background: url("../images/background.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+}*/
+/*.carousel-item2 {
+    background: url('../images/background2.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}*/
+/*.carousel-item3 {
+    background: url('../images/background3.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}*/
+/*.carousel-item4 {
+    background: url('../images/background4.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}*/
+/*.carousel-item5 {
+    background: url('../images/background5.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+}*/
+/*.carousel .active.left {
+    left:0;
+    opacity:0;
+    z-index:2;
+}*/
+
+
+/*
+.responsive-image{
+    width: 100%;
+    background-size: 100% 100%;
+} */
+
+
+/* Retina display */
+/*@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-image: url('images/background.jpg');
+    }
+}
+*/
+/* Desktop */
+/*@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-image: url('images/background.jpg');
+    }
+}*/
+
+/* Tablet */
+/*@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+        background-image: url('images/background2.jpg');
+    }
+}
+*/
+/* Mobile HD */
+/*@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+        background-image: url('images/background3.jpg');
+    }
+}*/
+
+/* Mobile LD */
+/*@media screen and (max-width: 350px){
+    .responsive-image{
+        background-image: url('images/background4.jpg');
+    }
+} */
+
+
+
+
+body {
+ background-color: #f2cbbc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+
+
+#map {
+  margin: 0 auto 0 auto;
+}
+.title {
+ font-family: 'Damion', cursive;
+  font-size: 32px;
+  color: ,10,59,1) 88%, rgba(255,10,59,1) 100%);
+}
+
+.card-title {
+  font-family: 'Raleway', sans-serif;
+
+}
+#mapHolder {
+  margin: auto;
+}
+
+#instruct {
+  opacity: 0.9;
+  margin: auto;
+}
+#lyft-web-button-parent{
+padding: 10%;
+margin: auto;
+}
+
+
+img {
+  float: left;
+  height: 62.5px;
+}
+
+#text {
+  font: 40px;
+}
+
+.background {
+  margin-top: 20px;
+  background-repeat: no-repeat;
+  
+  background-size: ;
+ 
+  
+}
+
+
+#weather {
+  padding: 5px;
+  text-align: center;
+  opacity: 0.9;
+  margin: auto;
+} 
+
+h6{
+  text-align: center;
+}
+
+#instructions {
+
+  margin-top: 30px;
+
+}
+
+
+h4 {
+font-family: 'Satisfy', cursive;
+color: #F05;
+
+}
+#ff9800 orange"
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: ;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+ 
+.responsive-img {
+	height: 20px;
+}
+
+.nav-mobile {
+	background-color: #e6af4b;
+}
+
+
+#mappy {
+  width: 100%;
+  margin-top:20px;
+}
+/*chat box styling*/
+
+body {
+    font-family: url="https://fonts.googleapis.com/css?family=Ralewa", sans-serif;
+}
+#chat-messages {
+    font-family: "Raleway", sans-serif;
+    color: white;
+    padding-left: 5%;
+    opacity: 0.9;
+    overflow-y: auto;
+    height: 250px;
+    width: 100%;
+}
+#swap-zone {
+    color:white;
+    width:100%;
+}
+#chat-bar {
+    color:white;
+    width: 100%;
+}
