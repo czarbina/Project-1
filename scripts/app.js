@@ -241,6 +241,9 @@ $("#submitBtn").on("click", function(){
           var coord = response.results[0].geometry.location;
           console.log(coord);
           initMap(coord.lat,coord.lng);
+          latx = coord.lat;
+          longy = coord.lng;
+          loadWeather();
     });
 
     
