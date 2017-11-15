@@ -221,3 +221,31 @@ function initMap(param_lat, param_lng) {
           $("#username").hide();
           $("#start").hide();
       };
+
+ $( document ).ready(function() {
+    console.log( "ready!" );
+
+
+$("#submitBtn").on("click", function(){
+    event.preventDefault();
+
+  var queryURL = "http://maps.google.com/maps/api/geocode/json?address=" + $("#address").val();
+  
+  // console.log(addy);
+
+  $.ajax({
+          url: encodeURI(queryURL),
+          method: "GET"
+        }).done(function(response) {
+
+          var coord = response.results[0].geometry.location;
+          console.log(coord);
+          initMap(coord.lat,coord.lng);
+    });
+
+    
+
+  });
+
+});
+     
