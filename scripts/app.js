@@ -229,7 +229,7 @@ function initMap(param_lat, param_lng) {
 $("#submitBtn").on("click", function(){
     event.preventDefault();
 
-  var queryURL = "http://maps.google.com/maps/api/geocode/json?address=" + $("#address").val();
+  var queryURL = "https://maps.google.com/maps/api/geocode/json?address=" + $("#address").val();
   
   // console.log(addy);
 
